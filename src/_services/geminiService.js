@@ -28,7 +28,11 @@ export async function getMentalHealthTips(scores) {
   const data = await response.json();
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
-  if (!text) return { tips: ["AI tidak mengembalikan teks."] };
+  if (!text) return { tips: [
+    "Jika nilai Anda tinggi, Anda disarankan untuk mulai mengurangi beban aktivitas, mengatur waktu istirahat, dan melakukan relaksasi.",
+    "Jika nilai berada pada tingkat sedang, coba lakukan manajemen stres ringan seperti journaling atau olahraga ringan.",
+    "Jika nilai rendah, tetap jaga pola hidup sehat dan hindari tekanan berlebihan."
+    ] };
 
   let clean = text
     .replace(/```json/gi, "")
